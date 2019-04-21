@@ -1,5 +1,7 @@
 package fr.polytech;
 
+import fr.polytech.back.Grid;
+import fr.polytech.back.GridStatus;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -16,4 +18,24 @@ public class GridTest {
 
         assertThat(map).isEqualTo(Grid.getSize());
     }
+
+    @Test
+    public void should_return_gridStatus_piece_creation(){
+        Game.run();
+        assertThat(GridStatus.piece_creation).isEqualTo(Game.game_gride.gridStatus);
+    }
+
+    @Test
+    public void should_return_gridStatus_active_piece(){
+        Game.run(); //precedent tests check if return -> piece_cretation status
+        Game.cycle(); //run one cycle
+        assertThat(GridStatus.active_piece).isEqualTo(Game.game_gride.gridStatus);
+    }
+
+    @Test
+    public void should_return_gridStatus_inactive_piece(){
+
+    }
+
+
 }
