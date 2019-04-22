@@ -8,7 +8,6 @@ import java.util.Arrays;
 
 public class MainPannel extends JFrame{
 
-    private JTable game_table;
     private Grid grid;
     private int height;
     private int width;
@@ -56,9 +55,10 @@ public class MainPannel extends JFrame{
     private Color convertInt(int colorInt){
         if(colorInt == 1) return new Color(230,175,45);
         else if(colorInt == 2) return  new Color(170,55,55);
-        else if(colorInt == 4) return  new Color(25,110,85);
-        else if(colorInt == 5) return  new Color(80,30,115);
-        else if(colorInt == 6) return  new Color(140,30,85);
+        else if(colorInt == 3) return  new Color(25,110,85);
+        else if(colorInt == 4) return  new Color(80,30,115);
+        else if(colorInt == 5) return  new Color(140,30,85);
+        else if(colorInt == 6) return  new Color(40,60,180);
         else return new Color(115,160,35);
     }
 
@@ -78,11 +78,8 @@ public class MainPannel extends JFrame{
      * Remove all the labels
      */
     public void clearAllLabel(){
-        for(int i=0;i<height;i++){
-            for(int j=0;j<width;j++){
-                this.remove(jTextPaneTab[i][j]);
-            }
-        }
+        this.getContentPane().removeAll();
+        this.repaint();
     }
 
     /**

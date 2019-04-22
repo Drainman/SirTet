@@ -1,6 +1,7 @@
 package fr.polytech;
 
 import fr.polytech.back.Grid;
+import fr.polytech.back.GridStatus;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -34,8 +35,11 @@ public class TetrisKeyListener implements KeyListener {
                 Game.game_gride.movePiece("down");
                 break;
         }
-        if(!Game.game_gride.isCurrentPieceFallen())
-            Game.game_gride.check_if_delete_line();
+        if(!Game.game_gride.isCurrentPieceFallen()){
+            Game.deletedLine+=Game.game_gride.check_if_delete_line();
+            Game.game_gride.gridStatus = GridStatus.inactive_piece;
+        }
+
 
         Game.panel.refresh_tab(Game.game_gride);
 
