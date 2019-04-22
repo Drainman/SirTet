@@ -105,5 +105,7 @@ public class Piece {
         return orientation;
     }
 
+    public int[][] getCurrentMapPiece() { return mapPiece.get(kind + orientation); }
+
 
 }
