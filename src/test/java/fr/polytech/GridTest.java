@@ -59,6 +59,16 @@ public class GridTest {
 
     @Test
     public void should_return_piece_move_down(){
+        Game.run();
+        Game.cycle(); // Create piece
 
+        int width = (int)Grid.getSize().get("width");
+        int height = (int)Grid.getSize().get("height");
+
+        System.out.println(Game.game_gride);
+        Game.game_gride.movePiece("down");
+        System.out.println(Game.game_gride);
+
+        for(int i = 0; i < width; ++i) assertThat(Game.game_gride.grideMatrix[i][0]).isEqualTo(0);
     }
 }
