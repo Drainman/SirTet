@@ -21,4 +21,9 @@ public class PieceTest {
         p.setOrientation(4);
         assertThat(p.getCurrentMapPiece()).isEqualTo(rotated);
     }
+
+    @Test
+    public void should_return_I_piece(){
+
+    }
 }

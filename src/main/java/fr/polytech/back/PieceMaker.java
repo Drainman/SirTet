@@ -10,6 +10,7 @@ import java.util.Random;
 public class PieceMaker {
 
     private static ArrayList<Piece> pieceList = new ArrayList<Piece>();
+    public static HashMap<String, Piece> pieceMap = new HashMap<String, Piece>();
     private static final File folderPiece = new File("./src/main/resources/fr/polytech/");
 
     public PieceMaker(){
@@ -40,8 +41,8 @@ public class PieceMaker {
            Piece piece = new Piece(hashMap,keyName,countColor+1);
            //And we add a sample in our list
            pieceList.add(piece);
+           pieceMap.put(names.get(countColor).split("\\.")[0], piece);
        }
-
     }
 
     /**

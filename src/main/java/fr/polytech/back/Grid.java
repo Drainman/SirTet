@@ -178,6 +178,22 @@ public class Grid {
     }
 
     /**
+     * Create a piece.
+     * Warning : this function call a unique piece hardcoded.
+     * Do not use it anymore except for test or issue for an error.
+     * @return active piece of the grid
+     */
+    public Piece create_piece(Piece p){
+        activePiece = p;
+        activePiece.x = origineX;
+        activePiece.y = origineY;
+
+        draw_piece();
+        gridStatus = GridStatus.active_piece;
+        return activePiece;
+    }
+
+    /**
      * Create a random piece.
      * @return active piece of the grid
      */

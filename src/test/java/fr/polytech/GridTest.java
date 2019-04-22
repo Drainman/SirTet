@@ -2,6 +2,8 @@ package fr.polytech;
 
 import fr.polytech.back.Grid;
 import fr.polytech.back.GridStatus;
+import fr.polytech.back.Piece;
+import fr.polytech.back.PieceMaker;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -34,13 +36,33 @@ public class GridTest {
 
     @Test
     public void should_return_gridStatus_inactive_piece(){
+        Game.run(); //precedent tests check if return -> piece_cretation status
 
+        // Crete 2 bar and a square
+        //Game.game_gride.create_piece(PieceMaker.pieceMap.get("I"));
+        Piece p = PieceMaker.pieceMap.get("I");
+
+        int width = (int)Grid.getSize().get("width");
+        int height = (int)Grid.getSize().get("height");
+
+        for(int i = 0; i < width-4; ++i){
+            Game.game_gride.grideMatrix[i][height-1] = 1;
+        }
+
+        Game.game_gride.create_piece(p);
+        Game.game_gride.movePiece("right");
+        Game.game_gride.movePiece("right");
+        Game.game_gride.movePiece("right");
+
+        for(int i = 0; i < height-1; ++i) Game.cycle(); // Downing the piece
+
+        System.out.println(Game.game_gride);
+
+        assertThat(GridStatus.inactive_piece).isEqualTo(Game.game_gride.gridStatus);
     }
 
     @Test
     public void should_return_piece_move_down(){
 
     }
-
-
 }
