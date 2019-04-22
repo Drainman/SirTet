@@ -376,18 +376,14 @@ public class Grid {
         return false;
     }
 
-    /*
-    bool Board::isGameOver()
-    {
-        for(int i = 0; i < BOARD_WIDTH; ++i)
-        {
-            if(area[i][0] != FREE) // Si il y a un bloc sur la première ligne de l'aire
-                return true; // C'est que la partie est finie
-        }
+    public boolean isLastLineFill(){
 
+        for(int i = 0; i < width; ++i)
+        {
+            if(grideMatrix[i][0] != 0)
+                return true;
+        }
         return false;
     }
-    */
-
 
 }
