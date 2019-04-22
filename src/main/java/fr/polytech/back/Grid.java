@@ -389,4 +389,8 @@ public class Grid {
         return false;
     }
 
+    public int getActivePieceRotation(){
+        return activePiece.getOrientation();
+    }
+
 }

@@ -73,6 +73,21 @@ public class GridTest {
     }
 
     @Test
+    public void should_return_rotated_piece(){
+        Game.run();
+        Piece p = PieceMaker.pieceMap.get("L");
+        Game.game_gride.create_piece(p);
+
+        Game.cycle(); Game.cycle();
+
+        int current_rotation = Game.game_gride.getActivePieceRotation();
+
+        Game.game_gride.rotateCurrentPiece(); // should do nothing because the piece exceed the grid
+
+        assertThat(Game.game_gride.getActivePieceRotation()).isEqualTo(4);
+    }
+
+    @Test
     public void should_return_none_rotated_piece_if_rotate_in_corner(){
         Game.run();
 
