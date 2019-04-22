@@ -84,6 +84,12 @@ public class Game {
     }
 
     /**
+     * Return the starting delay
+     * @return starting delay
+     */
+    public static int getBeginDelay(){return beginDelay;}
+
+    /**
      * Main of the project
      * @param args
      */

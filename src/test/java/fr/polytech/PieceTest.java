@@ -17,6 +17,8 @@ public class PieceTest {
 
     @Test
     public void should_return_I_piece(){
-        Piece p = PieceMaker.pieceMap.get("I");
+        PieceMaker pieceMaker = new PieceMaker();
+        Piece p = new Piece(PieceMaker.pieceMap.get("I"));
+        assertThat(p.kind).isEqualTo("I");
     }
 }

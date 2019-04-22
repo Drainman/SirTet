@@ -97,6 +97,8 @@ public class GridTest {
         Game.game_gride.movePiece("right");
         Game.game_gride.movePiece("right");
         Game.game_gride.movePiece("right");
+        Game.game_gride.movePiece("left");
+        Game.game_gride.movePiece("right");
         Game.cycle(); Game.cycle();
 
         int[][] grid = Game.game_gride.grideMatrix;
@@ -119,5 +121,14 @@ public class GridTest {
         Game.game_gride.rotateCurrentPiece(); // should do nothing because the piece exceed the grid
 
         assertThat(grid).isEqualTo(Game.game_gride.grideMatrix);
+    }
+
+    @Test void should_return_a_different_grid_after_creationPiece(){
+        Game.run();
+        Grid saveGrid = new Grid();
+        saveGrid.grideMatrix = Game.game_gride.grideMatrix;
+
+        Game.game_gride.create_piece();
+        assertThat(saveGrid).isNotEqualTo(Game.game_gride);
     }
 }
