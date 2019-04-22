@@ -108,5 +108,6 @@ public class Game {
         //GAME OVER
         System.out.println("GAME OVER !");
         System.out.println("You have deleted : "+deletedLine+" line(s).");
+        System.out.println("You made : "+deletedLine*1000+" point(s).");
     }
 }
