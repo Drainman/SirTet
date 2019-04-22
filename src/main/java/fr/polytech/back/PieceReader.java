@@ -14,8 +14,14 @@ import java.util.HashMap;
 
 public class PieceReader {
 
-    private static final File folderPiece = new File("pieces/");
 
+    /**
+     * Read a piece file and return its matrix
+     * @param file_path Peace file to load
+     * @return Matrix of a piece and all these orientations
+     * @throws IOException
+     * @throws ParseException
+     */
     public static HashMap<String,int[][]> load_data(String file_path) throws IOException, ParseException {
 
         HashMap<String,int[][]> pieceHashmap = new HashMap<String,int[][]>();
@@ -41,22 +47,28 @@ public class PieceReader {
 
             pieceHashmap.put(pieceName + (t+1), a_template);
         }
+
         return pieceHashmap;
     }
 
-    public static ArrayList<String> getFilesName(){
+    /**
+     * Return the name of all the files in a folder
+     * @param folderPiece Folder to watch
+     * @return Array of all the files name
+     */
+    public static ArrayList<String> getFilesName(File folderPiece){
 
         ArrayList<String> arrayListFilesName = new ArrayList<>();
 
         for (final File fileEntry : folderPiece.listFiles()) {
-            if (!fileEntry.isDirectory()) {
+            //ignore .keep and directory
+            if (!fileEntry.isDirectory() && !fileEntry.getName().equals(".keep")) {
                 arrayListFilesName.add(fileEntry.getName());
+                System.out.println(fileEntry.getName());
             }
         }
 
         return arrayListFilesName;
-
     }
-
 
 }

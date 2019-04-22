@@ -27,7 +27,7 @@ public class TetrisKeyListener implements KeyListener {
                 break;
             case KeyEvent.VK_UP:
                 System.out.println("TOUCHE UP");
-                Game.game_gride.rotateCurrentPieceLeft();
+                Game.game_gride.rotateCurrentPiece();
                 break;
             case KeyEvent.VK_DOWN :
                 System.out.println("TOUCHE DOWN");
@@ -42,12 +42,7 @@ public class TetrisKeyListener implements KeyListener {
 
     }
 
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-    public void keyTyped(KeyEvent e) {
-        // on ne fait rien
-    }
+    public void keyReleased(KeyEvent e) {}
+    public void keyTyped(KeyEvent e) {}
 }
 

@@ -2,13 +2,7 @@ package fr.polytech;
 
 import fr.polytech.back.Grid;
 import fr.polytech.back.GridStatus;
-import fr.polytech.back.Piece;
-import fr.polytech.back.PieceMaker;
 import fr.polytech.ihm.MainPannel;
-import sun.applet.Main;
-
-import javax.swing.*;
-import java.awt.event.KeyEvent;
 
 public class Game {
 
@@ -37,20 +31,31 @@ public class Game {
             game_gride.random_create_piece();
         }
 
-        else if(!game_gride.isCurrentPieceFallen() || game_gride.gridStatus == GridStatus.inactive_piece){
+        else if(game_gride.gridStatus == GridStatus.inactive_piece){
             System.out.println("[EVENT] ~ No active piece, check line to delete.\n");
             game_gride.check_if_delete_line();
             game_gride.random_create_piece();
         }
 
+        else if(!game_gride.isCurrentPieceFallen()){
+            game_gride.check_if_delete_line();
+            game_gride.gridStatus = GridStatus.piece_creation;
+            game_gride.random_create_piece();
+        }
+
         else if(game_gride.gridStatus == GridStatus.active_piece){
             game_gride.movePiece("down");
-            game_gride.check_if_delete_line();
+            //game_gride.check_if_delete_line();
         }
+
+        //System.out.println(game_gride);
     }
 
 
-
+    /**
+     * Main of the project
+     * @param args
+     */
     public static void main(String[] args) {
         int limit_cycle =  100000000;
 
