@@ -1,5 +1,7 @@
 package fr.polytech.back;
 
+import fr.polytech.Game;
+
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -307,7 +309,7 @@ public class Grid {
      */
     public void deleteLine(int y)
     {
-        clearPiece(); //We erase the current piece
+        //clearPiece(); //We erase the current piece
         gridStatus = GridStatus.inactive_piece;
 
         //We move all the line to delete the last one
@@ -317,7 +319,7 @@ public class Grid {
                 grideMatrix[i][j] = grideMatrix[i][j-1];
         }
 
-        draw_piece(); //We draw the piece again
+        //draw_piece(); //We draw the piece again
     }
 
     /**
@@ -356,7 +358,8 @@ public class Grid {
             return true;
 
         //Implicit else
-        check_if_delete_line(); //we check if we have to delete some lines
+        Game.deletedLine +=  check_if_delete_line(); //we check if we have to delete some lines
+        gridStatus = GridStatus.piece_creation;
         return false;
     }
 

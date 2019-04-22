@@ -6,9 +6,14 @@ import fr.polytech.ihm.MainPannel;
 
 public class Game {
 
-    public static Grid game_gride;
-    public static MainPannel panel;
-    public static int deletedLine =0;
+    /* PUBLIC ELEMENTS */
+    public static Grid game_gride;      //game use for the game
+    public static MainPannel panel;     //ihm use for the game
+    public static int deletedLine;      //counter of deleted line
+
+    /* PRIVATE ELEMENTS */
+    private static int beginDelay = 500;    //starting delay between two cycles
+    private static int minDelay = 100;      //minimum delay between two cycles
 
     /**
      * Launch the game.
@@ -56,10 +61,9 @@ public class Game {
         //We have a fall piece
         else if(game_gride.gridStatus == GridStatus.active_piece){
             game_gride.movePiece("down");
-            //game_gride.check_if_delete_line();
         }
 
-        else System.out.println("[WARNING] ~ An empty cycle has been detected.");
+        else System.out.println("[WARNING] ~ An empty cycle has been detected."); //TEST
 
         //System.out.println(game_gride);
         return true;
@@ -69,6 +73,15 @@ public class Game {
     public static boolean isGameOver(){return game_gride.isLastLineFill();}
 
 
+    /**
+     * Return a delay for the next cycle.
+     * More there are lines deleted, more the delay is reduced.
+     * @return delay between two cycles
+     */
+    public static int waitValue(){
+        if(beginDelay-(deletedLine*2)<=minDelay) return minDelay;
+        else return beginDelay - (deletedLine*2);
+    }
 
     /**
      * Main of the project
@@ -77,6 +90,7 @@ public class Game {
     public static void main(String[] args) {
 
         //INIT GAME
+        Game.deletedLine = 0;
         Game.run();
         //INIT IHM
         Game.panel = new MainPannel(Game.game_gride);
@@ -87,7 +101,7 @@ public class Game {
         //LOOP while isn't a game over
         while(cycle()){
             panel.refresh_tab(Game.game_gride);
-            try {Thread.sleep(500);}
+            try {Thread.sleep(waitValue());}
             catch (InterruptedException e) { e.printStackTrace(); }
         }
 
