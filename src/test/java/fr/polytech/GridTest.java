@@ -71,4 +71,38 @@ public class GridTest {
 
         for(int i = 0; i < width; ++i) assertThat(Game.game_gride.grideMatrix[i][0]).isEqualTo(0);
     }
+
+    @Test
+    public void should_return_none_rotated_piece_if_rotate_in_corner(){
+        Game.run();
+
+        Piece p = PieceMaker.pieceMap.get("L");
+
+        Game.game_gride.create_piece(p);
+        Game.game_gride.movePiece("right");
+        Game.game_gride.movePiece("right");
+        Game.game_gride.movePiece("right");
+        Game.cycle(); Game.cycle();
+
+        int[][] grid = Game.game_gride.grideMatrix;
+
+        System.out.println(Game.game_gride);
+        Game.game_gride.rotateCurrentPiece();
+        System.out.println(Game.game_gride);
+
+        assertThat(grid).isEqualTo(Game.game_gride.grideMatrix);
+    }
+
+    @Test
+    public void should_return_none_rotated_piece_if_rotate_exceeds_grid(){
+        Game.run();
+        Piece p = PieceMaker.pieceMap.get("I");
+        Game.game_gride.create_piece(p);
+
+        int[][] grid = Game.game_gride.grideMatrix;
+
+        Game.game_gride.rotateCurrentPiece(); // should do nothing because the piece exceed the grid
+
+        assertThat(grid).isEqualTo(Game.game_gride.grideMatrix);
+    }
 }
