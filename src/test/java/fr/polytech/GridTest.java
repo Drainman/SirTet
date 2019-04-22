@@ -35,11 +35,9 @@ public class GridTest {
     }
 
     @Test
-    public void should_return_gridStatus_inactive_piece(){
+    public void should_return_empty_line_after_filling_it(){
         Game.run(); //precedent tests check if return -> piece_cretation status
 
-        // Crete 2 bar and a square
-        //Game.game_gride.create_piece(PieceMaker.pieceMap.get("I"));
         Piece p = PieceMaker.pieceMap.get("I");
 
         int width = (int)Grid.getSize().get("width");
@@ -54,11 +52,9 @@ public class GridTest {
         Game.game_gride.movePiece("right");
         Game.game_gride.movePiece("right");
 
-        for(int i = 0; i < height-1; ++i) Game.cycle(); // Downing the piece
+        for(int i = 0; i < height; ++i) Game.cycle(); // Downing the piece until it arrive at the bottom
 
-        System.out.println(Game.game_gride);
-
-        assertThat(GridStatus.inactive_piece).isEqualTo(Game.game_gride.gridStatus);
+        for(int i = 0; i < width; ++i) assertThat(Game.game_gride.grideMatrix[i][height-1]).isEqualTo(0);
     }
 
     @Test
