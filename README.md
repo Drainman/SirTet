@@ -6,7 +6,7 @@
 SirTet est un Tetris écrit en java.
 C'est une solution qui répond au kata de qualité logiciel ci-contre : https://github.com/ygrenzinger/polytech-course-starter
 
-La solution propose un Back solide non dépendant de l'IHM. Effectivement les actions *cycliques* (création de pièces, descente automatique, suppression...) s'effectuent sans adhérence avec l'IHM qui ne sert qu'à la représentation et aux éventements de déplacement des formes.
+La solution propose un Back solide non dépendant de l'IHM. Effectivement les actions *cycliques* (création de pièces, descente automatique, suppression...) s'effectuent sans adhérence avec l'IHM qui ne sert qu'à la représentation et aux événements de déplacement des formes.
 Le reste est géré à 100% par le Back.
 
 ## Réponse aux exigences
